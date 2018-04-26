@@ -15,13 +15,7 @@ public class Calculations {
     }
 
     public boolean isStringAlreadyPresent(String incoming) {
-        boolean result = false;
-        for (String s : storedStringsMap.keySet()) {
-            if (incoming.equals(s)) {
-                result = true;
-            }
-        }
-        return result;
+        return storedStringsMap.get(incoming) != null;
     }
 
     public boolean addToStoredStringsMap(String incoming) {

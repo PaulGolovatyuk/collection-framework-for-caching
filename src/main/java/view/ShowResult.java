@@ -16,16 +16,11 @@ public class ShowResult {
         storedStrings = calculations.getStoredStringsMap();
     }
 
-    public String buildResultString(String s) {
+    public String buildResultString(String incomingString) {
         StringBuilder result = new StringBuilder();
-        calculations.addToStoredStringsMap(s);
-        for (Map.Entry<String, String> stringStringEntry : storedStrings.entrySet()) {
-            if (stringStringEntry.getKey().equals(s)) {
-                currentKey = stringStringEntry.getKey();
-                currentValue = stringStringEntry.getValue();
-                break;
-            }
-        }
+        calculations.addToStoredStringsMap(incomingString);
+        currentKey = incomingString;
+        currentValue = storedStrings.get(incomingString);
         result.append(currentKey).append("\n").append(currentValue);
 
         return result.toString();
