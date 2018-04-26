@@ -1,23 +1,34 @@
 package view;
 
-import logic.CollectionFramework;
+import logic.Calculations;
 
 import java.util.Map;
 
-public class ShowResult {
 
-    public void buildResultString(String simple){
-        CollectionFramework  collectionFramework = new CollectionFramework();
-        System.out.println(simple);
-        System.out.println(buildResultString(collectionFramework.countCharacters(simple)));
+public class ShowResult {
+    private Calculations calculations;
+    private Map<String, String> storedStrings;
+    private String currentKey;
+    private String currentValue;
+
+    public ShowResult() {
+        calculations = new Calculations();
+        storedStrings = calculations.getStoredStringsMap();
     }
-    private String buildResultString(Map<Character, Integer> map){
-        String result = "";
-        for (Character character : map.keySet()) {
-           String temp;
-           temp =  "\""+character+"\""+" - "+map.get(character);
-           result += temp+"\n";
+
+    public String buildResultString(String s) {
+        StringBuilder result = new StringBuilder();
+        calculations.addToStoredStringsMap(s);
+        for (Map.Entry<String, String> stringStringEntry : storedStrings.entrySet()) {
+            if (stringStringEntry.getKey().equals(s)) {
+                currentKey = stringStringEntry.getKey();
+                currentValue = stringStringEntry.getValue();
+                break;
+            }
         }
-        return result;
+        result.append(currentKey).append("\n").append(currentValue);
+
+        return result.toString();
     }
+
 }
