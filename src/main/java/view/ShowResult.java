@@ -8,7 +8,6 @@ import java.util.Map;
 public class ShowResult {
     private Calculations calculations;
     private Map<String, String> storedStrings;
-    private String currentKey;
     private String currentValue;
 
     public ShowResult() {
@@ -19,9 +18,8 @@ public class ShowResult {
     public String buildResultString(String incomingString) {
         StringBuilder result = new StringBuilder();
         calculations.addToStoredStringsMap(incomingString);
-        currentKey = incomingString;
         currentValue = storedStrings.get(incomingString);
-        result.append(currentKey).append("\n").append(currentValue);
+        result.append(incomingString).append("\n").append(currentValue);
 
         return result.toString();
     }

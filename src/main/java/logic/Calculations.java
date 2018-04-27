@@ -14,13 +14,13 @@ public class Calculations {
         storedStringsMap = new HashMap<>();
     }
 
-    public boolean isStringAlreadyPresent(String incoming) {
-        return storedStringsMap.get(incoming) != null;
+    public boolean isStringAbsent(String incoming) {
+        return storedStringsMap.get(incoming) == null;
     }
 
     public boolean addToStoredStringsMap(String incoming) {
         boolean isAdded = false;
-        if (!isStringAlreadyPresent(incoming) || storedStringsMap.isEmpty()) {
+        if (isStringAbsent(incoming) || storedStringsMap.isEmpty()) {
             storedStringsMap.put(incoming, stringToHashMap(incoming));
             isAdded = true;
         }

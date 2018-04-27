@@ -51,6 +51,13 @@ public class ShowResultTest {
 
     @Test
     public void singleSymbolTest() {
+        String expected = "$\n" +
+                "\"$\" - 1\n";
+        assertEquals(expected, showResult.buildResultString("$"));
+    }
+
+    @Test
+    public void singleSymbolManyTimesTest() {
         String expected = "aaaaa\n" +
                 "\"a\" - 5\n";
         assertEquals(expected, showResult.buildResultString("aaaaa"));
@@ -63,6 +70,13 @@ public class ShowResultTest {
                 "\"x\" - 3\n";
         assertEquals(expected, showResult.buildResultString("XxXxXx"));
     }
+
+    @Test
+    public void emptyStringTest() {
+        String expected = "\n";
+        assertEquals(expected, showResult.buildResultString(""));
+    }
+
 
     @Test(expected = NullPointerException.class)
     public void notNullTest() {
