@@ -20,7 +20,7 @@ public class Calculations {
 
     public boolean addToStoredStringsMap(String incoming) {
         boolean isAdded = false;
-        if (isStringAbsent(incoming) || storedStringsMap.isEmpty()) {
+        if (isStringAbsent(incoming)) {
             storedStringsMap.put(incoming, stringToHashMap(incoming));
             isAdded = true;
         }
